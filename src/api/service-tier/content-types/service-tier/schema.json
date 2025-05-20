@@ -1,0 +1,26 @@
+{
+  "collectionName": "service_tiers",
+  "info": {
+    "singularName": "service-tier",
+    "pluralName": "service-tiers",
+    "displayName": "ServiceTier"
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "float"
+    },
+    "contactForInfo": {
+      "type": "boolean",
+      "required": true
+    },
+    "medias": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::media.media"
+    }
+  }
+}
