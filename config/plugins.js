@@ -1,6 +1,6 @@
 // ./config/plugins.js
 module.exports = ({ env }) => {
-  const isProduction = env("NODE_ENV") == "production";
+  const isProduction = env("NODE_ENV") === "production";
 
   const uploadConfig = {
     provider: isProduction ? "cloudinary" : "local",
