@@ -17,6 +17,5 @@
       "target": "api::project.project",
       "inversedBy": "tools"
     }
-  },
-  "kind": "collectionType"
+  }
 }
