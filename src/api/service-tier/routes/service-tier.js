@@ -1,22 +1,9 @@
 "use strict";
 
-// /**
-//  * service-tier router
-//  */
-
-// const { createCoreRouter } = require("@strapi/strapi").factories;
-
-// module.exports = createCoreRouter("api::service-tier.service-tier");
+/**
+ * service-tier router
+ */
 
 const { createCoreRouter } = require("@strapi/strapi").factories;
 
-module.exports = createCoreRouter("api::service-tier.service-tier", {
-  config: {
-    find: {
-      middlewares: ["global::api-key"],
-    },
-    findOne: {
-      middlewares: ["global::api-key"],
-    },
-  },
-});
+module.exports = createCoreRouter("api::service-tier.service-tier");
