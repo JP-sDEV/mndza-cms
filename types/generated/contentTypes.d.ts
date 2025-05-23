@@ -461,6 +461,7 @@ export interface ApiMediaMedia extends Struct.CollectionTypeSchema {
 export interface ApiMetadataMetadata extends Struct.CollectionTypeSchema {
   collectionName: 'metadatas';
   info: {
+    description: '';
     displayName: 'Metadata';
     pluralName: 'metadatas';
     singularName: 'metadata';
@@ -469,7 +470,6 @@ export interface ApiMetadataMetadata extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    active: Schema.Attribute.Boolean;
     content: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

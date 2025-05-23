@@ -9,6 +9,7 @@ export default defineConfig([
     "dist",
     ".strapi/",
     "src/admin/app.example.js",
+    "src/api/metadata/content-types/metadata/lifecycles.js",
   ]),
   {
     files: ["**/*.{js,mjs,cjs}"],
