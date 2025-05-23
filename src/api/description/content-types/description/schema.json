@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "descriptions",
+  "info": {
+    "singularName": "description",
+    "pluralName": "descriptions",
+    "displayName": "landing description",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "description": {
+      "type": "text"
+    }
+  }
+}
