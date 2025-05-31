@@ -9,7 +9,10 @@ module.exports = {
 };
 
 function enforceExclusiveFileOrUrl(data) {
-  const hasFile = !!data.file;
+  const hasFile =
+    (Array.isArray(data.file) && data.file.length > 0) ||
+    (typeof data.file === "object" && data.file !== null);
+
   const hasUrl = !!data.url && data.url.trim() !== "";
 
   if ((hasFile && hasUrl) || (!hasFile && !hasUrl)) {
