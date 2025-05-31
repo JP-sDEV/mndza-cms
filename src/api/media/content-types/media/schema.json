@@ -1,9 +1,14 @@
 {
+  "kind": "collectionType",
   "collectionName": "medias",
   "info": {
     "singularName": "media",
     "pluralName": "medias",
-    "displayName": "Media"
+    "displayName": "Media",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
   },
   "attributes": {
     "name": {
@@ -14,13 +19,21 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images", "videos", "files"]
+      "allowedTypes": [
+        "images",
+        "videos",
+        "files"
+      ]
     },
-    "project": { 
+    "project": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::project.project",
       "inversedBy": "medias"
+    },
+    "url": {
+      "type": "string",
+      "required": true
     }
   }
 }
