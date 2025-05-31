@@ -1,9 +1,11 @@
 {
+  "kind": "collectionType",
   "collectionName": "projects",
   "info": {
     "singularName": "project",
     "pluralName": "projects",
-    "displayName": "Project"
+    "displayName": "Project",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -29,12 +31,10 @@
       "target": "api::tool.tool",
       "mappedBy": "project"
     },
-    "isVisible": {
-      "type": "boolean",
-      "required": true
-    },
-    "publishedAt": {
-      "type": "datetime"
+    "uuid": {
+      "type": "string",
+      "configurable": false,
+      "visible": false
     }
   }
 }
