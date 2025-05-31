@@ -14,8 +14,14 @@
     "title": {
       "type": "string"
     },
-    "content": {
+    "description": {
       "type": "text"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "mappedBy": "metadata"
     }
   }
 }
