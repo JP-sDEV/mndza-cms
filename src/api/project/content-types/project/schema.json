@@ -25,16 +25,16 @@
       "target": "api::media.media",
       "mappedBy": "project"
     },
-    "tools": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tool.tool",
-      "mappedBy": "project"
-    },
     "uuid": {
       "type": "string",
       "configurable": false,
       "visible": false
+    },
+    "tools": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tool.tool",
+      "mappedBy": "projects"
     }
   }
 }

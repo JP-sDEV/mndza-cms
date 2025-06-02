@@ -516,7 +516,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     medias: Schema.Attribute.Relation<'oneToMany', 'api::media.media'>;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    tools: Schema.Attribute.Relation<'oneToMany', 'api::tool.tool'>;
+    tools: Schema.Attribute.Relation<'manyToMany', 'api::tool.tool'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -587,6 +587,7 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
 export interface ApiToolTool extends Struct.CollectionTypeSchema {
   collectionName: 'tools';
   info: {
+    description: '';
     displayName: 'Tool';
     pluralName: 'tools';
     singularName: 'tool';
@@ -604,7 +605,7 @@ export interface ApiToolTool extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    project: Schema.Attribute.Relation<'manyToOne', 'api::project.project'>;
+    projects: Schema.Attribute.Relation<'manyToMany', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
