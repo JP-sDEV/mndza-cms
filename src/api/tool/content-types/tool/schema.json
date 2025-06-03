@@ -21,6 +21,9 @@
       "relation": "manyToMany",
       "target": "api::project.project",
       "inversedBy": "tools"
+    },
+    "key": {
+      "type": "string"
     }
   }
 }
