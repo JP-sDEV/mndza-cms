@@ -52,8 +52,6 @@ module.exports = {
   async beforeUpdate(event) {
     const { data, where } = event.params;
 
-    console.log("where: ", where);
-
     const current = await strapi.db
       .query("api::project.project")
       .findOne({ where });
