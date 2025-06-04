@@ -11,6 +11,11 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "uuid": {
+      "type": "string",
+      "configurable": false,
+      "visible": false
+    },
     "title": {
       "type": "string",
       "required": true
@@ -25,16 +30,15 @@
       "target": "api::media.media",
       "mappedBy": "project"
     },
-    "uuid": {
-      "type": "string",
-      "configurable": false,
-      "visible": false
-    },
     "tools": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tool.tool",
       "mappedBy": "projects"
+    },
+    "order": {
+      "type": "integer",
+      "min": 1
     }
   }
 }

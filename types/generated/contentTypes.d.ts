@@ -514,6 +514,13 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     medias: Schema.Attribute.Relation<'oneToMany', 'api::media.media'>;
+    order: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     tools: Schema.Attribute.Relation<'manyToMany', 'api::tool.tool'>;
