@@ -9,6 +9,16 @@ module.exports = {
       data.uuid = uuidv4();
     }
 
+    // If no order is provided, skip ordering logic
+    if (data.order == null) {
+      return;
+    }
+
+    // Validate order is a positive integer
+    if (typeof data.order !== "number" || data.order < 1) {
+      throw new Error("Order must be a positive integer or null.");
+    }
+
     const q = await strapi.db.query("api::project.project").findMany({
       where: {
         order: {
@@ -18,18 +28,12 @@ module.exports = {
       orderBy: { order: "desc" },
     });
 
-    // check if order field is non-empty and is non-negative
-    if (typeof data.order !== "number" || data.order < 1) {
-      throw new Error("Order must be a positive integer.");
-    }
-
     // check if order number is taken
     const targetOrder = data.order;
     const match = q.find((proj) => proj.order === targetOrder);
     const existingUUID = match ? match.uuid : null;
 
     // reassign the old entry with an order of null
-    // find project by UUID
     const existing = await strapi.db.query("api::project.project").findOne({
       where: { uuid: existingUUID },
     });
@@ -42,7 +46,6 @@ module.exports = {
           data: { order: null },
         },
         {
-          // Top-level publish flag
           publish: true,
         }
       );
@@ -56,8 +59,20 @@ module.exports = {
       .query("api::project.project")
       .findOne({ where });
 
+    // Skip if order hasn't changed
     if (current?.order === data.order) return;
 
+    // Skip logic if order is null or undefined (i.e., being cleared)
+    if (data.order == null) {
+      return;
+    }
+
+    // Validate that order is a positive integer
+    if (typeof data.order !== "number" || data.order < 1) {
+      throw new Error("Order must be a positive integer or null.");
+    }
+
+    // Continue logic only if order is a valid number
     const q = await strapi.db.query("api::project.project").findMany({
       where: {
         order: {
@@ -67,18 +82,10 @@ module.exports = {
       orderBy: { order: "desc" },
     });
 
-    // check if order field is non-empty and is non-negative
-    if (typeof data.order !== "number" || data.order < 1) {
-      throw new Error("Order must be a positive integer.");
-    }
-
-    // check if order number is taken
     const targetOrder = data.order;
     const match = q.find((proj) => proj.order === targetOrder);
     const existingUUID = match ? match.uuid : null;
 
-    // reassign the old entry with an order of null
-    // Find project by UUID
     const existing = await strapi.db.query("api::project.project").findOne({
       where: { uuid: existingUUID },
     });
@@ -91,13 +98,11 @@ module.exports = {
           data: { order: null },
         },
         {
-          // Top-level publish flag
           publish: true,
         }
       );
     }
 
-    // prevenet uuid from being mutated
     if (data.uuid) {
       delete data.uuid;
     }
